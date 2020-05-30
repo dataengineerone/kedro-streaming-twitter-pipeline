@@ -1,0 +1,50 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/04_user_guide/04_data_catalog.html
+
+
+raw_tweets:
+  type: sr.io.UncachedIncrementalDataSet
+  path: data/01_raw/raw_tweets
+  dataset: yaml.YAMLDataSet
+  filename_suffix: .yml
+
+
+confirm_raw_tweets:
+  type: text.TextDataSet
+  filepath: data/01_raw/raw_tweets/CHECKPOINT
+
+
+extracted_words:
+  type: IncrementalDataSet
+  path: data/02_intermediate/extracted_words
+  dataset: yaml.YAMLDataSet
+  filename_suffix: .yml
+
+
+word_counts:
+  type: IncrementalDataSet
+  path: data/03_primary/word_counts
+  dataset: yaml.YAMLDataSet
+  filename_suffix: .yml
+
+
+prev_word_counts:
+  type: sr.io.UncachedPartitionedDataSet
+  path: data/03_primary/word_counts
+  dataset: yaml.YAMLDataSet
+  filename_suffix: .yml
+
+
+word_graphs:
+  type: IncrementalDataSet
+  path: data/07_model_output/word_graphs
+  dataset: matplotlib.MatplotlibWriter
+  filename_suffix: .png
+
+
+last_word_graph:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/last_word_graph.png
+
