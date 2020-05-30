@@ -1,8 +1,10 @@
-# semi-realtime
+# Streaming Twitter data through Kedro in Semi Real-Time
 
-## Overview
 
-This is a semi-realtime streaming kedro pipeline.
+Requires twitter API credentials in `conf/*/credentials.yml`.
+
+Watch the video here: https://youtu.be/_9DgYDEb2Ag
+
 
 Run with `kedro run --streaming`
 
